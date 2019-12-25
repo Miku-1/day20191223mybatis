@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.MemberMapper">
+
+    <select id="getAll" resultType="com.pojo.Member" >
+        SELECT * FROM t_qq_member
+    </select>
+    <insert id="addMember" parameterType="com.pojo.Member">
+        INSERT INTO t_qq_member
+        VALUES (NULL,#{qq_number},#{password},#{img_url},#{nick_name},#{sex})
+    </insert>
+    <delete id="deleteMember" parameterType="java.lang.Integer">
+        DELETE FROM t_qq_member WHERE id=#{ id }
+    </delete>
+    <update id="updateMember" parameterType="com.pojo.Member">
+        UPDATE t_qq_member
+        SET img_url=#{img_url},nick_name=#{nick_name},sex=#{sex}
+        WHERE qq_number=#{qq_number}
+    </update>
+
+</mapper>
